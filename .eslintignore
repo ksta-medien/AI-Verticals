@@ -1,0 +1,11 @@
+# dependencies
+node_modules
+# Nuxt build
+.nuxt
+# Nuxt generate
+dist
+# codegen
+codegen/api
+svg-sprite-generator.js
+components.d.ts
+modules/pwa/templates/workbox/sw.js

@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "pnpm -F @xxx/le build",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .eslintignore .",
+    "lintfix": "eslint --fix --ext .js,.ts,.vue --ignore-path .eslintignore .",
+    "prepare": "pnpm -r prepare"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue}": [
+      "pnpm lintfix"
+    ]
+  },
+  "pnpm": {
+    "overrides": {
+    }
+  }
+}

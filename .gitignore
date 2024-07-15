@@ -1,0 +1,13 @@
+node_modules
+/codegen/api/
+*.log*
+.idea
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+.DS_Store
+public/sprite.svg
+.env.dev

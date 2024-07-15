@@ -1,0 +1,39 @@
+{
+  "year": "Jahr|Jahre",
+  "month": "Monat|Monate",
+  "fields": {
+    "email": "E-Mail",
+    "password": "Passwort"
+  },
+  "actions":{
+    "register": "Registrieren",
+    "login": "Login",
+    "submit": "Abschicken"
+  },
+  "consent": {
+    "recommended_content": "Externer redaktioneller Inhalt",
+    "allow_content_of": "Inhalte von {label} gestatten",
+    "allowed_content_of": "Inhalte von {label} gestattet",
+    "line1": "An dieser Stelle wollen wir Dir externe Inhalte anzeigen, du musst zustimmen, damit du diese siehst.",
+    "line2": "Ich bin damit einverstanden, dass mir externe Inhalte der externen Plattform {label} angezeigt werden. Dabei können personenbezogene Daten an Drittplattformen übermittelt werden. Mehr dazu in unserer Datenschutzerklärung."
+  },
+  "meta": {
+    "copyright": "ksta-royals.de",
+    "author": "ksta-royals.de",
+    "name": "KSTA Royals",
+    "redaktionMail": "redaktion{at}ksta-royals.de",
+    "infoMail": "info{at}ksta-royals.de",
+    "magazinTitle": "KSTA Royals",
+    "magazinDesc": "Hier fehlt noch eine Beschreibung"
+  },
+  "login": {
+    "not_registered_yet": "Noch nicht registriert?"
+  },
+  "error": {
+    "email_or_username_are_already_taken": "E-Mail bereits vorhanden.",
+    "file-invalid-type": "Die ausgewählte Datei ist im falschen Format.",
+    "passwords_do_not_match": "Die Passwörter stimmen nicht überein.",
+    "password_must_be_at_least_6_characters": "Passwort muss mindestens 6 Zeichen lang sein.",
+    "invalid_identifier_or_password": "E-Mail oder Passwort falsch"
+  }
+}

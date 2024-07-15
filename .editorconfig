@@ -1,0 +1,12 @@
+# EditorConfig for consistent coding style: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*.{vue,ts,css,js,mjs,json,xml,iml,html}]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true

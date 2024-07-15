@@ -1,0 +1,14 @@
+{
+  "name": "@xxx/em",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi prepare & nuxi dev",
+    "build": "nuxi build && cp -R .output ../../.output",
+    "prepare": "nuxi prepare",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+  }
+}
