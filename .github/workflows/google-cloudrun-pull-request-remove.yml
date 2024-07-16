@@ -1,0 +1,20 @@
+
+name: Remove PR-Preview
+
+on:
+  pull_request:
+    types: [closed ]
+
+jobs:
+  remove:
+    strategy:
+      matrix:
+        mandator: [ksta, rundschau-online, express]
+    uses: ./.github/workflows/google-cloudrun-remove.yml
+    secrets: 
+      GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+    with:
+      SERVICE: pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-frontend-web
+      PROJECT_ID: falk-test
+      ENVIRONMENT: preview-pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-frontend-web
+

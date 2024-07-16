@@ -1,0 +1,52 @@
+name: Remove CloudRun Deployment
+on:
+    workflow_call:
+        secrets:
+            GH_ACCESS_TOKEN:
+                required: true
+        inputs:
+            SERVICE: 
+                required: true
+                type: string
+            ENVIRONMENT:
+                  required: true
+                  type: string
+            PROJECT_ID: # fixed to dev environement -> not used
+                required: true
+                type: string
+            NEEDED:
+                required: false
+                type: boolean
+                default: true
+
+jobs:
+    remove:
+      # Add 'id-token' with the intended permissions for workload identity federation
+        permissions:
+          contents: 'read'
+          id-token: 'write'
+        if: ${{ inputs.NEEDED == true }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Google Auth
+              id: auth
+              uses: 'google-github-actions/auth@v1'
+              with:
+                workload_identity_provider: 'projects/670684132661/locations/global/workloadIdentityPools/github-pool/providers/github-pool'
+                service_account: 'gh-deployment@falk-test.iam.gserviceaccount.com'
+            
+            - name: Set up Cloud SDK
+              uses: google-github-actions/setup-gcloud@v1
+              with:
+                    project_id: falk-test
+
+            - name: Remove  CloudRun Deployment
+              continue-on-error: true
+              run: gcloud run services delete ${{ inputs.SERVICE }} --project falk-test --region europe-west3 --quiet
+
+            - name: 🗑 Delete deployment environment
+              continue-on-error: true
+              uses: strumwolf/delete-deployment-environment@v2
+              with:
+                token: ${{ secrets.GH_ACCESS_TOKEN }}
+                environment: ${{ inputs.ENVIRONMENT }}
