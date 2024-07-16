@@ -77,7 +77,7 @@ jobs:
           pnpm -F @ai-vertical/${{inputs.MANDATOR}} run build
         name: Build Nuxt Project
         env:
-          NUXT_PUBLIC_DIRECTUS_URL: ${{ inputs.NUXT_DIRECTUS_API_TOKEN }}
+          NUXT_PUBLIC_DIRECTUS_URL: ${{ inputs.NUXT_PUBLIC_DIRECTUS_URL }}
           NUXT_DIRECTUS_API_TOKEN: ${{ inputs.NUXT_DIRECTUS_API_TOKEN }}
           STRAPI_URL: ${{ inputs.STRAPI_URL }}
           ENV: ${{ inputs.ENV}}
@@ -121,7 +121,7 @@ jobs:
           service: ${{ inputs.SERVICE }}
           region: ${{ env.REGION }}
           env_vars: |
-            NUXT_PUBLIC_DIRECTUS_URL= ${{ inputs.NUXT_DIRECTUS_API_TOKEN }}
+            NUXT_PUBLIC_DIRECTUS_URL= ${{ inputs.NUXT_PUBLIC_DIRECTUS_URL }}
             NUXT_DIRECTUS_API_TOKEN= ${{ inputs.NUXT_DIRECTUS_API_TOKEN }}
             STRAPI_URL= ${{ inputs.STRAPI_URL }}
             ENV= ${{ inputs.ENV}}
