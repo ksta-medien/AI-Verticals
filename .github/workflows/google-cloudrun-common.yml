@@ -37,6 +37,9 @@ on:
       CICD_GCLOUD_SERVICE_ACCOUNT:
         required: false
         type: string
+      NUXT_DEPLOYMENT_HASH:
+        required: true
+        type: string
 
 env:
   REGION: europe-west3
