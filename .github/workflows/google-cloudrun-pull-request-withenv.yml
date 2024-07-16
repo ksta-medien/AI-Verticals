@@ -68,3 +68,4 @@ jobs:
       SERVICE: pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web
       PROJECT_ID: falk-test
       ENVIRONMENT: preview-pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web
+

@@ -29,7 +29,7 @@ on:
         required: true
         type: string
       STRAPI_URL:
-        required: true,
+        required: true
         type: string
       CICD_GCLOUD_WORKLOAD_IDENTITY_PROVIDER:
         required: false
