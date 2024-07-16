@@ -38,7 +38,7 @@
       class="element-shadow mb-8 w-full"
       :alt="post.title"
       format="webp"
-      :src="`https://picsum.photos/seed/${post.id}/1280/790?random=${post.id}`"
+      src="/img/placeholder.jpg"
       height="790"
       width="1280"
       loading="eager"

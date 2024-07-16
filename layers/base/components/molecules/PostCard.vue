@@ -21,7 +21,7 @@
             loading="lazy"
             quality="60"
             provider="ipx"
-            :src="`https://picsum.photos/seed/${item.id}/600/400?random=${item.id}`"
+            src="/img/placeholder.jpg"
             height="400"
             width="600"
             class="min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
