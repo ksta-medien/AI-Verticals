@@ -73,6 +73,7 @@ export default defineNuxtConfig({
     canonicalHost: process.env.NUXT_PUBLIC_BLOG_URL as string,
   },
   image: {
+    domains: ['https://picsum.photos'],
     directus: {
       baseURL: 'https://enrichment-center.dev.ds.dumont.de/assets/',
     },
