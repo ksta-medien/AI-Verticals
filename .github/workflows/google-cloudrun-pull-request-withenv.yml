@@ -1,0 +1,71 @@
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled, closed]
+
+jobs:
+  depl:
+    name: Deploy to Cloud Run
+    uses: ./.github/workflows/google-cloudrun-common.yml
+    with:
+      NUXT_PUBLIC_DIRECTUS_URL: https://enrichment-center.dev.ds.dumont.de
+      NUXT_DIRECTUS_API_TOKEN: 5n65w3aaMFUMqL52y6owV5AQoXfHQXfQ
+      STRAPI_URL: https://ai-verticals-strapi-ktmjadcfsa-ey.a.run.app
+      ENV: dev
+      MANDATOR: ${{ matrix.mandator }}
+      NUXT_DEPLOYMENT_HASH: ${{ github.sha }}
+      SERVICE: pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticlas-web
+      PROJECT_ID: falk-test
+      CICD_GCLOUD_WORKLOAD_IDENTITY_PROVIDER: projects/670684132661/locations/global/workloadIdentityPools/github-pool/providers/github-pool
+      CICD_GCLOUD_SERVICE_ACCOUNT: gh-deployment@falk-test.iam.gserviceaccount.com
+      NEEDED: ${{ inputs.NEEDED == 'true' && github.event.action != 'closed' }}
+
+  configure:
+    strategy:
+      matrix:
+        mandator: [royals]
+    needs: [depl]
+    permissions:
+      contents: "read"
+      id-token: "write"
+    runs-on: ubuntu-latest
+    name: Configure Cloud Run for PR-Preview
+    env:
+      SERVICE: pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web
+      URL: https://pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web-zbz3eqkwza-ey.a.run.app
+    environment:
+      name: preview-pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web
+      url: ${{ env.URL }}
+
+    steps:
+      - name: Google Auth
+        id: auth
+        uses: "google-github-actions/auth@v1"
+        with:
+          workload_identity_provider: "projects/670684132661/locations/global/workloadIdentityPools/github-pool/providers/github-pool"
+          service_account: "gh-deployment@falk-test.iam.gserviceaccount.com"
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: falk-test
+      - name: Configure Cloud Run
+        if: ${{ inputs.NEEDED == 'true' }}
+        run: |-
+          gcloud run services update ${{ env.SERVICE }} --max-instances=1 --min-instances=0 --region=europe-west3 --platform=managed
+          gcloud run services add-iam-policy-binding ${{ env.SERVICE }} --member="allUsers" --role="roles/run.invoker" --region=europe-west3
+
+  remove:
+    if: ${{ github.event.action == 'closed' || github.event.action == 'unlabeled'}}
+    strategy:
+      matrix:
+        mandator: [royals]
+    uses: ./.github/workflows/google-cloudrun-remove.yml
+    secrets:
+      GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+    with:
+      NEEDED: ${{ inputs.NEEDED == 'false' }}
+      SERVICE: pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web
+      PROJECT_ID: falk-test
+      ENVIRONMENT: preview-pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web
+

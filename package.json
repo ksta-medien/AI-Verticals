@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "pnpm -F @xxx/le build",
+    "build": "pnpm -F @ai-vertical/royals build",
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .eslintignore .",
     "lintfix": "eslint --fix --ext .js,.ts,.vue --ignore-path .eslintignore .",
     "prepare": "pnpm -r prepare"

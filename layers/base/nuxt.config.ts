@@ -4,7 +4,7 @@ import { MANDATOR } from '../../environments';
 import { devtools } from 'vue';
 const { resolve } = createResolver(import.meta.url);
 
-const swrObject = { swr: process.env.NODE_ENV === 'production' ? 300 : false };
+const swrObject = { swr: process.env.ENV === 'production' ? 300 : false };
 
 export default defineNuxtConfig({
   alias: {
