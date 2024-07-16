@@ -28,7 +28,7 @@ const meta = ref<PageMeta>({ pagination: { page: 1, pageSize: 16 } });
 const { find } = useStrapi<Post>();
 
 const result = await find(`articles-${mandator}`, {
-  populate: 'deep,4',
+  populate: '*',
   sort: 'publishedAt:desc',
   pagination: { pageSize: meta.value.pagination.pageSize, page: meta.value.pagination.page },
 });
@@ -44,7 +44,7 @@ const onLoadMore = async () => {
   meta.value.pagination.page++;
   try {
     const result = await find(`articles-${mandator}`, {
-      populate: 'deep,3',
+      populate: '*',
       pagination: { pageSize: meta.value.pagination.pageSize, page: meta.value.pagination.page },
       sort: 'publishedAt:desc',
     });

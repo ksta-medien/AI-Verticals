@@ -27,7 +27,7 @@
       class="element-shadow mb-8"
       :alt="post.title"
       format="webp"
-      :src="post.cover.hash + post.cover.ext"
+      :src="post.cover.url"
       sizes="sm:90vw md:50vw lg:70vw"
       :height="post.cover.height"
       :width="post.cover.width"

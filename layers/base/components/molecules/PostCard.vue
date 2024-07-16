@@ -5,14 +5,13 @@
         <div v-if="!hideImage" class="image relative rounded-lg overflow-hidden">
           <nuxt-picture
             v-if="item.cover"
-            provider="strapi"
             :alt="item?.cover?.alternativeText || item.title"
             loading="lazy"
             quality="60"
-            :src="item.cover.hash + item.cover.ext"
+            :src="item.cover.url"
             sizes="sm:100vw md:30vw lg:30vw"
-            :height="item.cover.height"
-            :width="item.cover.width"
+            :height="400"
+            :width="600"
             :img-attrs="{ class: 'min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out' }"
           />
           <img
