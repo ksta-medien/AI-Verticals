@@ -1,6 +1,6 @@
 import type { Post } from '@types';
 
-export const useItemUrl = (item: Post) => {
+export const useCategoryUrl = (item: Post) => {
   const slugify = (str: string) =>
     str
       .toLowerCase()
@@ -9,13 +9,12 @@ export const useItemUrl = (item: Post) => {
       .replace(/[\s_-]+/g, '-')
       .replace(/^-+|-+$/g, '');
 
-  const slug = slugify(item.title);
-
   let category = '';
+
   if (item.categories?.length) {
     const name = slugify(item.categories[0].name);
     category = `/${item.categories[0].type}/${name}-${item.categories[0].id}`;
   }
 
-  return `${category}/${slug}-${item.id}`;
+  return category;
 };

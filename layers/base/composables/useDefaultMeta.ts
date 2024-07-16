@@ -41,23 +41,22 @@ export const useHomepageMeta = () => {
   };
 };
 
-export const useArticleMeta = (post: Ref<Post | MagazinPost>) => {
+export const useArticleMeta = (post: Ref<Post>) => {
   const { blogUrl, blogApiUrl } = usePublicConfig();
   const { fullPath } = useRoute();
 
-  const author = usePostAuthor(post.value);
   return {
-    title: `${post.value?.seo?.metaTitle ? post.value?.seo?.metaTitle : post.value.title}`,
+    title: `${post.value?.Seo?.metaTitle ? post.value?.Seo?.metaTitle : post.value.title}`,
     meta: [
       {
         name: 'description',
-        content: post.value?.seo?.metaDescription ? post.value?.seo?.metaDescription : post.value.intro,
+        content: post.value?.Seo?.metaDescription ? post.value?.Seo?.metaDescription : post.value.intro,
       },
       { property: 'og:title', content: post.value.title },
       {
         property: 'og:description',
-        content: post.value?.seo?.metaDescription
-          ? post.value?.seo?.metaDescription
+        content: post.value?.Seo?.metaDescription
+          ? post.value?.Seo?.metaDescription
           : post.value.intro.substring(0, 150) + `${post.value.intro.length > 150 ? '...' : ''}`,
       },
       { property: 'og:image', content: `${blogApiUrl}${post.value.cover?.url}` },

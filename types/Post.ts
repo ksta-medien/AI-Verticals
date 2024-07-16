@@ -10,13 +10,14 @@ export interface Post extends Base {
   cover: StrapiImage;
   // content: Base[];
   content: string;
-  seo: Seo;
+  Seo: Seo;
+  categories?: PostCategory[];
 }
-
-// export interface PostKnowledge extends Base {
-//   title: string;
-//   body: string;
-// }
+export type PostCategory = {
+  id: number;
+  name: string;
+  type: string;
+};
 
 // export type AuthorAttributes = {
 //   name: string;

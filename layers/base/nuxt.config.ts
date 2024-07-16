@@ -1,6 +1,7 @@
 import pkg from './package.json';
 import { createResolver } from '@nuxt/kit';
 import { MANDATOR } from '../../environments';
+import { devtools } from 'vue';
 const { resolve } = createResolver(import.meta.url);
 
 const swrObject = { swr: process.env.NODE_ENV === 'production' ? 300 : false };
@@ -25,7 +26,14 @@ export default defineNuxtConfig({
       blogUrl: '',
       page: '',
       mandator: MANDATOR,
+      directus: {
+        url: '',
+      },
     },
+  },
+  directus: {
+    token: process.env.NUXT_DIRECTUS_API_TOKEN,
+    devtools: true,
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -54,6 +62,7 @@ export default defineNuxtConfig({
       },
     ],
     'nuxt-icon',
+    'nuxt-directus',
   ],
   components: true,
   imports: {
@@ -62,6 +71,11 @@ export default defineNuxtConfig({
   'nuxt-jsonld': { disableOptionsAPI: true },
   schemaOrg: {
     canonicalHost: process.env.NUXT_PUBLIC_BLOG_URL as string,
+  },
+  image: {
+    directus: {
+      baseURL: 'https://enrichment-center.dev.ds.dumont.de/assets/',
+    },
   },
   experimental: {
     componentIslands: true,

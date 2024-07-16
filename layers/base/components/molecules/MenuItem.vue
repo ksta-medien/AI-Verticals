@@ -45,7 +45,7 @@ const props = defineProps<{ entry: MenuItem }>();
 const showSubMenu = ref<boolean>(false);
 const { entry } = toRefs(props);
 const submenu = ref(null);
-const hasSubmenu = computed(() => entry.value.items.length > 0);
+const hasSubmenu = computed(() => entry.value.items?.length > 0);
 
 onClickOutside(submenu, () => (showSubMenu.value = false));
 

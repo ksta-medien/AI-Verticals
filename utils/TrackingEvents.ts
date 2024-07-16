@@ -25,5 +25,5 @@ export enum TrackingEvents {
 }
 
 export function dispatchEvent(trackingEvent: TrackingEvents, content: string) {
-  useTrackEvent(trackingEvent, { props: { content } });
+  // useTrackEvent(trackingEvent, { props: { content } });
 }

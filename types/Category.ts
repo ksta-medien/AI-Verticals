@@ -1,15 +1,12 @@
-import type { Post } from './Post';
-import type { StrapiImage } from './StrapiImage';
-import type { Seo } from './Site';
-import type { Base } from './Base';
-
-export interface Category extends Base {
+export interface Person extends Category {
+  full_name: string;
+}
+export interface Haus extends Category {
   name: string;
-  shortName: string;
-  slug: string;
-  intro: string;
-  seoBottomText: string;
-  posts: Post[];
-  cover: StrapiImage;
-  seo: Seo;
+  short_briefing: string;
+  logo: string;
+}
+export interface Category {
+  id: number;
+  wikipedia_link?: string;
 }

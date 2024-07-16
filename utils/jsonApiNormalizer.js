@@ -27,6 +27,9 @@ export function normalize(data, ignoreAttributes = []) {
     }
 
     for (const key in data) {
+      if (key === 'categories' && data[key] != null && typeof data[key] == 'string') {
+        data[key] = JSON.parse(data[key]);
+      }
       if (!ignoreAttributes.includes(key)) {
         data[key] = normalize(data[key], ignoreAttributes);
       }

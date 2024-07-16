@@ -3,7 +3,7 @@ body {
 }
 
 ::selection {
-  @apply bg-blue-950 text-white;
+  @apply bg-primary text-white;
 }
 
 /* Structure */

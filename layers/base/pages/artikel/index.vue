@@ -4,12 +4,12 @@
     <div class="mt-8">
       <OrganismsHomepageOpener :posts="highlights"></OrganismsHomepageOpener>
     </div>
-    <h1 class="!my-8 text-4xl">Neuste Artikel</h1>
+    <h2 class="!my-8 text-4xl">Neuste Artikel</h2>
     <div class="mt-8 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <MoleculesPostCard v-for="post in rest" :key="post.id" :item="post" />
     </div>
     <div v-if="meta.pagination.page < meta.pagination.pageCount" class="flex justify-center mt-16">
-      <button class="bg-primary px-4 py-1 rounded-2xl text-anthrazit" @click="onLoadMore">Load More</button>
+      <button class="bg-primary text-white px-4 py-1 rounded-2xl" @click="onLoadMore">Load More</button>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ import type { PageMeta } from '@types';
 const posts = ref<Post[] | null>(null);
 const highlights = ref<Post[] | null>(null);
 const rest = ref<Post[] | null>(null);
-const meta = ref<PageMeta>({ pagination: { page: 1, pageSize: 50, pageCount: 1, total: 25 } });
+const meta = ref<PageMeta>({ pagination: { page: 1, pageSize: 16 } });
 
 const { find } = useStrapi<Post>();
 

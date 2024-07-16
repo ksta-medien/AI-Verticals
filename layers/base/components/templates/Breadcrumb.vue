@@ -1,15 +1,15 @@
 <template>
-  <div class="mb-4">
-    <transition-expand>
-      <div v-if="breadcrumbs.length > 0" class="">
+  <ClientOnly>
+    <div class="mb-4">
+      <div v-if="breadcrumbs.length > 0">
         <div class="boxed-content text-base py-3">
           <NuxtLink v-for="b in breadcrumbs" :key="b.url" :to="b.url" class="breadcrumb-item">
             {{ b.label }}
           </NuxtLink>
         </div>
       </div>
-    </transition-expand>
-  </div>
+    </div>
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>

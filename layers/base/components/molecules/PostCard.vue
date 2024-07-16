@@ -1,10 +1,11 @@
 <template>
-  <NuxtLink :to="`/abc/${slug}`" class="hover:scale-[1.02] transition-all">
+  <NuxtLink :to="slug" class="hover:scale-[1.02] transition-all group">
     <div class="inner flex flex-col gap-4 text-left border-black">
       <div class="image-wrapper">
         <div v-if="!hideImage" class="image relative rounded-lg overflow-hidden">
           <nuxt-picture
             v-if="item.cover"
+            provider="strapi"
             :alt="item?.cover?.alternativeText || item.title"
             loading="lazy"
             quality="60"
@@ -13,25 +14,26 @@
             sizes="sm:100vw md:30vw lg:30vw"
             :height="item.cover.height"
             :width="item.cover.width"
-            :img-attrs="{ class: 'min-w-full' }"
+            :img-attrs="{ class: 'min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out' }"
           />
           <nuxt-picture
             v-else
             :alt="item.title"
             loading="lazy"
             quality="60"
+            provider="ipx"
             class="aspect-video element-shadow rounded object-cover w-full"
             :src="`https://picsum.photos/seed/${item.id}/600/400?random=${item.id}`"
             sizes="sm:100vw md:30vw lg:30vw"
             height="400"
             width="600"
-            :img-attrs="{ class: 'min-w-full' }"
+            :img-attrs="{ class: 'min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out' }"
           />
         </div>
       </div>
 
       <div class="content">
-        <div class="text-2xl font-bold">
+        <div class="text-2xl font-semibold">
           <h2 class="text-primary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
           <h3 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h3>
         </div>

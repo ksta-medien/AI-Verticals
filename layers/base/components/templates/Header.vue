@@ -1,7 +1,7 @@
 <template>
   <header class="sticky bg-white backdrop-blur-2xl top-0 left-0 z-10 right-0 transition-all duration-500">
     <div class="boxed-content">
-      <div class="flex py-6 gap-8 justify-between items-center border-b border-black">
+      <div class="flex py-6 gap-8 justify-between items-center border-b border-primary">
         <button aria-label="Sidebar öffnen" class="block sm:hidden" @click="toggleSidebar">
           <Icon name="humbleicons:bars" class="text-3xl" />
         </button>

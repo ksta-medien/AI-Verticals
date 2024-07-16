@@ -2,7 +2,6 @@ export * from './ArticleQuote';
 export * from './Author';
 export * from './Breadcrumb';
 export * from './Category';
-export * from './CategoryPosts';
 export * from './ContentItems';
 export * from './ContentPage';
 export * from './ExternalTeaser';
