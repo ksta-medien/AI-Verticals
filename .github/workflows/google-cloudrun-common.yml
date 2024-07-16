@@ -74,8 +74,6 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
       - run: |-
-          pnpm run codegen
-          pnpm run setup
           pnpm -F @ai-vertical/${{inputs.MANDATOR}} run build
         name: Build Nuxt Project
         env:
