@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   //     localImageSharp: {
   //       provider: resolve('../base/providers/localImageSharp'),
   //       options: {
-  //         baseURL: `${urls[process.env.NODE_ENV]}/uploads/`,
+  //         baseURL: `${urls[process.env.ENV]}/uploads/`,
   //       },
   //     },
   //   },

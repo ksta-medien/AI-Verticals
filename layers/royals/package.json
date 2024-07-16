@@ -1,5 +1,5 @@
 {
-  "name": "@xxx/em",
+  "name": "@ai-vertical/royals",
   "type": "module",
   "scripts": {
     "dev": "nuxi prepare & nuxi dev",
