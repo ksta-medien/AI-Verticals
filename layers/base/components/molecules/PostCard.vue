@@ -9,25 +9,22 @@
             :alt="item?.cover?.alternativeText || item.title"
             loading="lazy"
             quality="60"
-            class="aspect-video element-shadow rounded object-cover w-full"
             :src="item.cover.hash + item.cover.ext"
             sizes="sm:100vw md:30vw lg:30vw"
             :height="item.cover.height"
             :width="item.cover.width"
             :img-attrs="{ class: 'min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out' }"
           />
-          <nuxt-picture
+          <img
             v-else
             :alt="item.title"
             loading="lazy"
             quality="60"
             provider="ipx"
-            class="aspect-video element-shadow rounded object-cover w-full"
             :src="`https://picsum.photos/seed/${item.id}/600/400?random=${item.id}`"
-            sizes="sm:100vw md:30vw lg:30vw"
             height="400"
             width="600"
-            :img-attrs="{ class: 'min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out' }"
+            class="min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
           />
         </div>
       </div>

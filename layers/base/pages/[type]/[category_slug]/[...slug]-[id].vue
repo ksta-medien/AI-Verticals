@@ -28,20 +28,17 @@
       :alt="post.title"
       format="webp"
       :src="post.cover.hash + post.cover.ext"
-      :placeholder="[100, 50]"
       sizes="sm:90vw md:50vw lg:70vw"
       :height="post.cover.height"
       :width="post.cover.width"
       loading="eager"
     />
-    <nuxt-img
+    <img
       v-else
       class="element-shadow mb-8 w-full"
       :alt="post.title"
       format="webp"
       :src="`https://picsum.photos/seed/${post.id}/1280/790?random=${post.id}`"
-      :placeholder="[100, 50]"
-      sizes="sm:90vw md:50vw lg:70vw"
       height="790"
       width="1280"
       loading="eager"
