@@ -1,5 +1,9 @@
 export interface Person extends Category {
   full_name: string;
+  avatar: string;
+  birth_place: string;
+  birth_date: string;
+  death_date?: string;
 }
 export interface Haus extends Category {
   name: string;

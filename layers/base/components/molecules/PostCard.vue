@@ -1,7 +1,7 @@
 <template>
-  <NuxtLink :to="slug" class="hover:scale-[1.02] transition-all group">
+  <div class="hover:scale-[1.02] transition-all group">
     <div class="inner flex flex-col gap-4 text-left border-black">
-      <div class="image-wrapper">
+      <NuxtLink :to="slug" class="image-wrapper">
         <div v-if="!hideImage" class="image relative rounded-lg overflow-hidden">
           <nuxt-picture
             v-if="item.cover"
@@ -27,22 +27,34 @@
             class="min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
           />
         </div>
-      </div>
+      </NuxtLink>
 
       <div class="content">
-        <div class="text-2xl font-semibold">
-          <h2 class="text-primary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
-          <h3 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h3>
+        <div v-if="item.categories" class="tags flex flex-wrap gap-2 mb-2">
+          <nuxt-link
+            v-for="(cat, index) in item.categories"
+            :key="cat.id"
+            class="border px-2 rounded-full hover:border-primary transition-all"
+            :to="useCategoryUrl(item, index)"
+          >
+            <span>{{ cat.name }}</span>
+          </nuxt-link>
         </div>
+        <NuxtLink :to="slug">
+          <div class="text-2xl font-semibold">
+            <h2 class="text-primary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
+            <h3 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h3>
+          </div>
 
-        <p class="">{{ item.intro }}</p>
-        <span class="flex gap-1 items-center text-sm mt-2">
-          <Icon name="ic:baseline-calendar-month" />
-          {{ useDateFormat(new Date(item.publishedAt as string), 'DD.MM.YYYY').value }}
-        </span>
+          <p class="">{{ item.intro }}</p>
+          <span class="flex gap-1 items-center text-sm mt-2">
+            <Icon name="ic:baseline-calendar-month" />
+            {{ useDateFormat(new Date(item.publishedAt as string), 'DD.MM.YYYY').value }}
+          </span>
+        </NuxtLink>
       </div>
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script lang="ts" setup>
