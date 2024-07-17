@@ -11,7 +11,7 @@ body {
   @apply max-w-[1400px] mx-auto px-8 md:px-16;
 }
 
-.page-enter-active,
+/* .page-enter-active,
 .page-leave-active {
   transition: all 0.2s;
 }
@@ -19,8 +19,17 @@ body {
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-}
+} */
 
 code{
   white-space: break-spaces;
+}
+
+.view-image{
+  view-transition-name: article-image;
+  contain: layout;
+}
+.view-title{
+  view-transition-name: article-title;
+  contain: layout;
 }

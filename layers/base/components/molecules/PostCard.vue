@@ -12,7 +12,10 @@
             sizes="sm:100vw md:30vw lg:30vw"
             :height="400"
             :width="600"
-            :img-attrs="{ class: 'min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out' }"
+            :img-attrs="{
+              class:
+                'group-focus:view-image min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out',
+            }"
           />
           <img
             v-else
@@ -23,7 +26,7 @@
             src="/img/placeholder.jpg"
             height="400"
             width="600"
-            class="min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
+            class="group-focus:view-image min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
           />
         </div>
       </NuxtLink>
@@ -40,7 +43,7 @@
           </nuxt-link>
         </div>
         <NuxtLink :to="slug">
-          <div class="text-2xl font-semibold">
+          <div class="text-2xl font-semibold group-focus:view-title">
             <h2 class="text-primary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
             <h3 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h3>
           </div>
