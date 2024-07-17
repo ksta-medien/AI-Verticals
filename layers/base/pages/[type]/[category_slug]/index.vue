@@ -69,8 +69,8 @@ try {
     category_content.value = useDefaultContentItems(type)[0];
   }
 } catch (e) {
-  console.log(e);
-  throw createError({ statusCode: 404, statusMessage: e.message, fatal: true });
+  console.log('default');
+  category_content.value = useDefaultContentItems(type)[0];
 }
 
 const breadcrumbs = [
