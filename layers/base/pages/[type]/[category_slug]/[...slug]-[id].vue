@@ -1,7 +1,7 @@
 <template>
   <article v-if="post" class="boxed-content">
     <div class="max-w-screen-lg mx-auto">
-      <div class="!mb-8 text-4xl font-semibold">
+      <div class="!mb-8 text-4xl font-semibold view-title">
         <h1 class="text-primary inline-block">{{ post.title.split(':')[0] }}:&nbsp;</h1>
 
         <h2 v-if="post.title.split(':')[1]" class="inline-block">{{ post.title.split(':')[1] }}</h2>
@@ -25,7 +25,7 @@
         <nuxt-link
           v-for="(cat, index) in post.categories"
           :key="cat.id"
-          class="border px-2 rounded-full hover:border-primary transition-all text-sm"
+          class="view-image border px-2 rounded-full hover:border-primary transition-all text-sm"
           :to="useCategoryUrl(post, index)"
         >
           <span>{{ cat.name }}</span>
