@@ -21,6 +21,16 @@
           </span>
         </time>
       </div>
+      <div v-if="post.categories" class="tags flex flex-wrap gap-2 mb-8">
+        <nuxt-link
+          v-for="(cat, index) in post.categories"
+          :key="cat.id"
+          class="border px-2 rounded-full hover:border-primary transition-all text-sm"
+          :to="useCategoryUrl(post, index)"
+        >
+          <span>{{ cat.name }}</span>
+        </nuxt-link>
+      </div>
     </div>
     <nuxt-img
       v-if="post.cover"
