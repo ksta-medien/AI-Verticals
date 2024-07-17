@@ -1,9 +1,9 @@
 <template>
-  <!-- <TemplatesHeader /> -->
+  <TemplatesHeader />
   <NuxtLoadingIndicator color="#ffa931" />
-  <!-- <TemplatesSidebar /> -->
-  <div class="flex justify-center h-screen">
-    <div class="content-frame my-12 p-8 text-center">
+  <TemplatesSidebar />
+  <div class="h-screen boxed-content">
+    <div class="content-frame my-12 text-center">
       <p class="text-primary text-4xl">{{ error?.statusCode }}</p>
       <p class="mt-4">
         Fehler mit Seite: <span class="italic text-primary">{{ error?.url }}</span>
@@ -25,7 +25,6 @@ useHead({
   title: '404 Not Found',
   htmlAttrs: {
     lang: 'de-DE',
-    class: 'dark',
   },
 });
 

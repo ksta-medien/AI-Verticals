@@ -5,8 +5,12 @@ interface ComponentMap {
 }
 
 const componentMap: ComponentMap = {
-  person: defineAsyncComponent(() => import('../components/organisms/Person.vue')),
-  haus: defineAsyncComponent(() => import('../components/organisms/Haus.vue')),
+  'content.info-person': defineAsyncComponent(() => import('@base/components/content-items/Person.vue')),
+  'content.info-haus': defineAsyncComponent(() => import('@base/components/content-items/Haus.vue')),
+  'content.info-event': defineAsyncComponent(() => import('@base/components/content-items/Event.vue')),
+  'content.artikel-fuer-die-kategorie': defineAsyncComponent(
+    () => import('@base/components/content-items/ArticlesForCategorie.vue')
+  ),
 };
 
 export const componentForContentItem = (type: string) => {

@@ -8,20 +8,14 @@ export interface Post extends Base {
   title: string;
   intro: string;
   cover: StrapiImage;
-  // content: Base[];
   content: string;
   Seo: Seo;
-  categories?: PostCategory[];
+  categories?: string;
 }
-export type PostCategory = {
-  id: number;
-  name: string;
-  type: string;
-};
-
-// export type AuthorAttributes = {
-//   name: string;
-//   slug: string;
-//   path: string;
-//   portrait: StrapiImage;
-// };
+export interface ContentItem extends Base {
+  headline: string;
+}
+export interface Content extends Base {
+  name?: string;
+  content: ContentItem[];
+}
