@@ -7,11 +7,12 @@
         width="400"
         fit="inside"
         quality="80"
+        :alt="category.avatar.title"
         :img-attrs="{ class: 'object-contain w-full h-full' }"
         :modifiers="{
           access_token: directus.token,
         }"
-        :src="category.avatar"
+        :src="category.avatar.id"
       />
     </div>
     <div>
@@ -23,19 +24,19 @@
           ><span> – † {{ category.death_date }}</span></template
         >
       </div>
-      <div v-if="category.monarchies" class="tags flex flex-wrap gap-2 mb-2">
-        <!-- <nuxt-link
-          v-for="(cat, index) in category.monarchies"
-          :key="cat"
-          class="border px-2 rounded-full hover:border-primary transition-all"
-          :to="useCategoryUrl(item, index)"
-        >
-          <span>{{ cat.name }}</span>
-        </nuxt-link> -->
-      </div>
       <p v-if="category.wikipedia_link" class="mt-4">
         <a target="_blank" :href="category.wikipedia_link">Mehr Informationen bei Wikipedia ⇢</a>
       </p>
+      <div v-if="category.monarchies" class="tags flex flex-wrap gap-2 mt-4">
+        <nuxt-link
+          v-for="(mon, index) in category.monarchies"
+          :key="mon.id"
+          class="border px-2 rounded-full hover:border-primary transition-all"
+          :to="useMonarchieUrl(mon.monarchies_id, index)"
+        >
+          <span>{{ mon.monarchies_id.name }}</span>
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>

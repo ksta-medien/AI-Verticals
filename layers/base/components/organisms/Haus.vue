@@ -7,11 +7,12 @@
         width="400"
         fit="inside"
         quality="80"
+        :alt="category.logo.title"
         :img-attrs="{ class: 'object-contain w-full h-full' }"
         :modifiers="{
           access_token: directus.token,
         }"
-        :src="category.logo"
+        :src="category.logo.id"
       />
     </div>
     <div>

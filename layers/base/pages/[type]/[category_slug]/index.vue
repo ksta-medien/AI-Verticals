@@ -43,9 +43,16 @@ const {
 const { getItemById } = useDirectusItems();
 
 const category = ref<Haus | Person | null>();
+const parameters = {
+  fields: '*.*.*.*',
+  deep: {
+    monarchies: { _limit: 3 },
+  },
+};
 const category_result = await getItemById<Haus | Person>({
   collection: useEnrichmentType(type),
   id: id as string,
+  params: parameters,
 });
 
 category.value = category_result;
