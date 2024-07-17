@@ -21,7 +21,6 @@ defineProps<{
     grid-template-rows: auto;
     grid-template-areas:
       'opener rest'
-      'opener rest'
       'opener rest';
   }
 }

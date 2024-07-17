@@ -15,12 +15,23 @@
       />
     </div>
     <div>
-      <h1 class="!mb-4 text-4xl">{{ category.full_name }}</h1>
+      <h1 class="!mb-2 text-4xl">{{ category.full_name }}</h1>
+      <h2 v-if="category.royal_title" class="my-2">{{ category.royal_title }}</h2>
       <div>
         <span>* {{ category.birth_date }} in {{ category.birth_place }}</span>
         <template v-if="category.death_date"
           ><span> – † {{ category.death_date }}</span></template
         >
+      </div>
+      <div v-if="category.monarchies" class="tags flex flex-wrap gap-2 mb-2">
+        <!-- <nuxt-link
+          v-for="(cat, index) in category.monarchies"
+          :key="cat"
+          class="border px-2 rounded-full hover:border-primary transition-all"
+          :to="useCategoryUrl(item, index)"
+        >
+          <span>{{ cat.name }}</span>
+        </nuxt-link> -->
       </div>
       <p v-if="category.wikipedia_link" class="mt-4">
         <a target="_blank" :href="category.wikipedia_link">Mehr Informationen bei Wikipedia ⇢</a>

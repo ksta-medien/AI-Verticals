@@ -4,6 +4,8 @@ export interface Person extends Category {
   birth_place: string;
   birth_date: string;
   death_date?: string;
+  royal_title?: string;
+  monarchies?: Array<number>;
 }
 export interface Haus extends Category {
   name: string;

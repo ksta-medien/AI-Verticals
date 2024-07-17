@@ -19,8 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Quote, SearchResponse } from '@types';
-import { toast } from 'vue3-toastify';
+import type { Post, SearchResponse } from '@types';
 const searchTerm = ref('');
 const result = ref<SearchResponse | null>();
 
@@ -33,7 +32,6 @@ const onSearch = async () => {
     result.value = await $fetch<SearchResponse>(`/api/search?p=${searchTerm.value}&limit=25`);
     navigateTo(`/suche?p=${searchTerm.value}`);
   } catch (e) {
-    if (process.client) toast.error('Suche ging schief :/');
     result.value = null;
   }
 };

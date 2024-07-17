@@ -12,10 +12,15 @@
       <p>Keine passenden Artikel gefunden</p>
     </div>
     <div
-      v-if="meta.pagination.pageCount && meta.pagination.page < meta.pagination.pageCount"
+      v-if="
+        meta.pagination.pageCount && meta.pagination.pageCount > 1 && meta.pagination.page <= meta.pagination.pageCount
+      "
       class="flex justify-center mt-16"
     >
-      <button class="bg-primary px-4 py-1 rounded-2xl text-white" @click="onLoadMore">Load More</button>
+      <MoleculesPagination
+        :pages-total="meta.pagination.pageCount"
+        :current-page="meta.pagination.page"
+      ></MoleculesPagination>
     </div>
   </div>
 </template>
@@ -27,11 +32,11 @@ import { normalize } from '@utils/jsonApiNormalizer';
 const { mandator } = usePublicConfig();
 
 definePageMeta({
-  path: '/:type/:category_slug([a-z,\-]*)+-:id(\\d+)',
+  path: '/:type/:category_slug([a-z,\-]*)+-:id(\\d+)/:page(\\d+)?',
 });
 
 const {
-  params: { type, category_slug, id },
+  params: { type, category_slug, id, page },
 } = useRoute();
 
 // get category details
@@ -51,7 +56,7 @@ if (!category.value) {
 
 // get posts for category
 const posts = ref<Post[] | null>(null);
-const meta = ref<PageMeta>({ pagination: { page: 1, pageSize: 12 } });
+const meta = ref<PageMeta>({ pagination: { page: parseInt(page) || 1, pageSize: 15 } });
 
 const { find } = useStrapi<Post>();
 
@@ -68,24 +73,6 @@ posts.value = normalize(result.data);
 if (!posts.value) {
   throw createError({ statusCode: 404, statusMessage: 'Strapi Inhalt nicht gefunden', fatal: true });
 }
-
-const onLoadMore = async () => {
-  meta.value.pagination.page++;
-  try {
-    const result = await find(`articles-${mandator}`, {
-      populate: '*',
-      sort: 'publishedAt:desc',
-      pagination: { pageSize: meta.value.pagination.pageSize, page: meta.value.pagination.page },
-      filters: {
-        categories: { $contains: category.value?.full_name || category.value?.name },
-      },
-    });
-    meta.value = result.meta as PageMeta;
-    posts.value = [...posts.value, ...normalize(result.data)];
-  } catch (e) {
-    throw createError({ statusCode: e.error.statusCode, statusMessage: e.error.message, fatal: true });
-  }
-};
 
 const breadcrumbs = [
   { url: '/', label: 'Startseite' },
