@@ -1,13 +1,18 @@
 <template>
-  <section class="newset-articles my-8">
+  <section class="newset-articles my-12">
     <h2 v-if="item.headline" class="mb-8 text-4xl">{{ item.headline }}</h2>
-    <div
+    <Swiper
       v-if="posts && posts.length"
-      class="grid gap-x-8 gap-y-16 sm:gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      :autoplay="{
+        delay: 8000,
+        disableOnInteraction: true,
+      }"
     >
-      <MoleculesPostCard v-for="post in posts" :key="post.id" :item="post" />
-      <nuxt-link class="flex items-center justify-center" to="/artikel">Alle Artikel ansehen ⇢</nuxt-link>
-    </div>
+      <SwiperSlide v-for="post in posts" :key="post.id">
+        <MoleculesPostCardSlider :item="post" />
+      </SwiperSlide>
+    </Swiper>
+    <p class="mt-8"><nuxt-link to="/artikel">Alle Artikel ansehen ⇢</nuxt-link></p>
   </section>
 </template>
 

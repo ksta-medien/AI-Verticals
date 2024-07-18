@@ -44,6 +44,7 @@
     "nuxt": "^3.12.3",
     "nuxt-directus": "^5.6.1",
     "nuxt-jsonld": "^2.0.8",
+    "nuxt-swiper": "^1.2.2",
     "pinia": "^2.1.7",
     "qs": "^5.2.1",
     "swiper": "^9.4.1",

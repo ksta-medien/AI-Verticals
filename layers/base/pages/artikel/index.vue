@@ -41,8 +41,6 @@ const {
   params: { page },
 } = useRoute();
 
-console.log(parseInt(page));
-
 const posts = ref<Post[] | null>(null);
 const highlights = ref<Post[] | null>(null);
 const rest = ref<Post[] | null>(null);

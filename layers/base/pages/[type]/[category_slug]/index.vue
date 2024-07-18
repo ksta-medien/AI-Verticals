@@ -47,7 +47,6 @@ try {
     throw createError({ statusCode: 404, statusMessage: 'Enrichtment Inhalt nicht gefunden', fatal: true });
   }
 } catch (e) {
-  console.log(e);
   throw createError({ statusCode: 404, statusMessage: e.message, fatal: true });
 }
 
@@ -65,11 +64,9 @@ try {
   category_content.value = normalize(category_content_result.data)[0];
 
   if (!category_content.value || category_content.value.length == 0) {
-    console.log('default');
     category_content.value = useDefaultContentItems(type)[0];
   }
 } catch (e) {
-  console.log('default');
   category_content.value = useDefaultContentItems(type)[0];
 }
 

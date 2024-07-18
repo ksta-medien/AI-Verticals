@@ -28,11 +28,9 @@ try {
   homepage.value = normalize(homepage_result.data);
 
   if (!homepage.value) {
-    console.log('default');
     homepage.value = useDefaultContentItems('homepage');
   }
 } catch (e) {
-  console.log('default');
   homepage.value = useDefaultContentItems('homepage');
 }
 

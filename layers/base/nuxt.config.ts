@@ -63,6 +63,7 @@ export default defineNuxtConfig({
     ],
     'nuxt-icon',
     'nuxt-directus',
+    'nuxt-swiper',
   ],
   components: true,
   imports: {
