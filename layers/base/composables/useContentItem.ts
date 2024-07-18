@@ -13,6 +13,7 @@ const componentMap: ComponentMap = {
   ),
   'content.neuste-artikel': defineAsyncComponent(() => import('@base/components/content-items/NewestArticles.vue')),
   'content.personen': defineAsyncComponent(() => import('@base/components/content-items/Personen.vue')),
+  'content.haeuser': defineAsyncComponent(() => import('@base/components/content-items/Haeuser.vue')),
 };
 
 export const componentForContentItem = (type: string) => {

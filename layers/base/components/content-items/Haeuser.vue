@@ -1,5 +1,5 @@
 <template>
-  <section v-if="peoples" class="newset-articles my-8">
+  <section v-if="haeuser" class="newset-articles my-8">
     <h2 v-if="item.headline" class="mb-8 text-4xl">{{ item.headline }}</h2>
     <Swiper
       :space-between="20"
@@ -18,18 +18,18 @@
         },
       }"
     >
-      <SwiperSlide v-for="person in peoples" :key="person.id">
-        <MoleculesPersonSlide :item="person" />
+      <SwiperSlide v-for="haus in haeuser" :key="haus.id">
+        <MoleculesHausSlide :item="haus" />
       </SwiperSlide>
     </Swiper>
   </section>
 </template>
 
 <script lang="ts" setup>
-import type { Person, ContentItem } from '@types';
+import type { Haus, ContentItem } from '@types';
 
 const { getItems } = useDirectusItems();
-const peoples = ref<Person[]>();
+const haeuser = ref<Haus[]>();
 
 defineProps<{
   item: ContentItem;
@@ -43,18 +43,18 @@ const parameters = {
 };
 
 try {
-  const result = await getItems<Person[]>({
-    collection: 'people',
+  const result = await getItems<Haus[]>({
+    collection: 'monarchies',
     params: parameters,
   });
 
-  peoples.value = result;
+  haeuser.value = result;
 
-  if (!peoples.value) {
-    console.log('Keine Personen gefunden');
+  if (!haeuser.value) {
+    console.log('Keine Häuser gefunden');
   }
 } catch (e) {
-  console.log('Keine Personen gefunden');
+  console.log('Keine Häuser gefunden');
 }
 </script>
 
