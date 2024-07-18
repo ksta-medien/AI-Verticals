@@ -43,7 +43,6 @@
 
 <script lang="ts" setup>
 import type { Person } from '@types';
-const { directus } = usePublicConfig();
 
 defineProps<{
   category: Person;

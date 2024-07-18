@@ -27,7 +27,6 @@
 
 <script lang="ts" setup>
 import type { Event } from '@types';
-const { directus } = usePublicConfig();
 
 defineProps<{
   category: Event;
