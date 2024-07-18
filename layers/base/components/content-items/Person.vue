@@ -5,8 +5,9 @@
         sizes="400px"
         provider="directus"
         width="400"
-        fit="inside"
-        quality="80"
+        height="400"
+        fit="cover"
+        quality="100"
         :alt="category.avatar.title"
         :img-attrs="{ class: 'object-contain w-full h-full' }"
         :modifiers="{
@@ -43,6 +44,7 @@
 
 <script lang="ts" setup>
 import type { Person } from '@types';
+const { directus } = usePublicConfig();
 
 defineProps<{
   category: Person;

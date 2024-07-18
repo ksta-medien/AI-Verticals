@@ -1,9 +1,9 @@
 <template>
-  <section class="newset-articles my-8">
+  <section class="newest-articles my-8">
     <h2 v-if="item.headline" class="mb-8 text-4xl">{{ item.headline }}</h2>
     <Swiper v-if="posts && posts.length" :space-between="50" :modules="modules">
       <SwiperSlide v-for="post in posts" :key="post.id">
-        <MoleculesPostCardSlider :item="post" />
+        <MoleculesPostCardSlide :item="post" />
       </SwiperSlide>
     </Swiper>
     <p class="mt-8"><nuxt-link to="/artikel">Alle Artikel ansehen ⇢</nuxt-link></p>

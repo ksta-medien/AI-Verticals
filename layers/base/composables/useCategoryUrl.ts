@@ -1,4 +1,4 @@
-import type { Post, Haus } from '@types';
+import type { Post, Haus, Person } from '@types';
 
 export const useCategoryUrl = (item: Post, index = 0) => {
   const slugify = (str: string) =>
@@ -40,6 +40,26 @@ export const useMonarchieUrl = (item: Haus) => {
 
   const name = slugify(item.name);
   category = `/haus/${name}-${item.id}`;
+
+  return category;
+};
+export const usePersonUrl = (item: Person) => {
+  const slugify = (str: string) =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+  let category = '';
+
+  const name = slugify(item.full_name);
+  category = `/person/${name}-${item.id}`;
 
   return category;
 };

@@ -5,8 +5,9 @@
         sizes="400px"
         provider="directus"
         width="400"
+        height="400"
         fit="inside"
-        quality="80"
+        quality="100"
         :alt="category.logo.title"
         :img-attrs="{ class: 'object-contain w-full h-full' }"
         :modifiers="{

@@ -43,8 +43,8 @@
       </div>
       <NuxtLink :to="slug">
         <div class="text-2xl font-semibold group-focus:view-title">
-          <h2 class="text-secondary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
-          <h3 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h3>
+          <h3 class="text-secondary">{{ item.title.split(':')[0] }}:&nbsp;</h3>
+          <h4 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h4>
         </div>
 
         <span class="flex gap-1 items-center text-sm mt-2">

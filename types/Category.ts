@@ -23,6 +23,14 @@ export interface Haus extends Category {
     title: string;
   };
 }
+export interface Event extends Category {
+  name: string;
+  short_briefing: string;
+  logo: {
+    id: string;
+    title: string;
+  };
+}
 export interface Category {
   id: number;
   wikipedia_link?: string;
