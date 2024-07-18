@@ -1,7 +1,7 @@
 <template>
-  <div class="transition-all group relative min-h-[60vh]">
+  <div class="transition-all group relative min-h-[60vh] h-auto rounded-lg overflow-hidden">
     <NuxtLink :to="slug" class="image-wrapper absolute top-0 bottom-0 left-0 right-0 block">
-      <div v-if="!hideImage" class="image absolute top-0 bottom-0 left-0 right-0 rounded-lg overflow-hidden">
+      <div v-if="!hideImage" class="image absolute top-0 bottom-0 left-0 right-0">
         <nuxt-picture
           v-if="item.cover"
           :alt="item?.cover?.alternativeText || item.title"
@@ -12,7 +12,8 @@
           :height="400"
           :width="600"
           :img-attrs="{
-            class: 'group-focus:view-image min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out',
+            class:
+              'group-focus:view-image min-w-full min-h-full w-auto h-auto object-cover group-hover:scale-105 transition-all duration-[2000ms] ease-out',
           }"
         />
         <img
@@ -24,12 +25,12 @@
           src="/img/placeholder.jpg"
           height="400"
           width="600"
-          class="group-focus:view-image min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
+          class="group-focus:view-image min-w-full min-h-full w-auto h-auto object-cover group-hover:scale-105 transition-all duration-[2000ms] ease-out"
         />
       </div>
     </NuxtLink>
 
-    <div class="content absolute z-index-10 bg-white/40 bottom-0 w-full p-4">
+    <div class="content absolute z-index-10 bg-black/60 text-white bottom-0 w-full p-4">
       <div v-if="item.categories" class="tags flex flex-wrap gap-2 mb-2">
         <nuxt-link
           v-for="(cat, index) in item.categories.slice(0, 4)"
@@ -42,11 +43,10 @@
       </div>
       <NuxtLink :to="slug">
         <div class="text-2xl font-semibold group-focus:view-title">
-          <h2 class="text-primary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
+          <h2 class="text-secondary">{{ item.title.split(':')[0] }}:&nbsp;</h2>
           <h3 v-if="item.title.split(':')[1]">{{ item.title.split(':')[1] }}</h3>
         </div>
 
-        <p class="">{{ item.intro }}</p>
         <span class="flex gap-1 items-center text-sm mt-2">
           <Icon name="ic:baseline-calendar-month" />
           {{ useDateFormat(new Date(item.publishedAt as string), 'DD.MM.YYYY').value }}

@@ -1,7 +1,7 @@
 <template>
   <div class="boxed-content">
     <template v-if="highlights.length">
-      <h1 class="!mb-8 text-4xl">Highlights</h1>
+      <h1 class="mb-8 text-4xl">Highlights</h1>
       <div class="mt-8">
         <OrganismsHomepageOpener :posts="highlights"></OrganismsHomepageOpener>
       </div>

@@ -1,13 +1,7 @@
 <template>
-  <section class="newset-articles my-12">
+  <section class="newset-articles my-8">
     <h2 v-if="item.headline" class="mb-8 text-4xl">{{ item.headline }}</h2>
-    <Swiper
-      v-if="posts && posts.length"
-      :autoplay="{
-        delay: 8000,
-        disableOnInteraction: true,
-      }"
-    >
+    <Swiper v-if="posts && posts.length" :space-between="50" :modules="modules">
       <SwiperSlide v-for="post in posts" :key="post.id">
         <MoleculesPostCardSlider :item="post" />
       </SwiperSlide>
@@ -21,9 +15,13 @@ import type { Post } from '@types';
 import { normalize } from '@utils/jsonApiNormalizer';
 const { mandator } = usePublicConfig();
 
+// import { SwiperPagination } from 'swiper/vue';
+
 defineProps<{
   item: ContentItem;
 }>();
+
+const modules = [];
 
 // get latest posts
 const posts = ref<Post[] | null>(null);
