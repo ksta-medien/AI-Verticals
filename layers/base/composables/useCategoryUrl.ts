@@ -1,18 +1,18 @@
-import type { Post, Haus, Person } from '@types';
+import type { Post, Haus, Person, Event } from '@types';
+
+const slugify = (str: string) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 
 export const useCategoryUrl = (item: Post, index = 0) => {
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-
   let category = '';
 
   if (item.categories?.length) {
@@ -24,18 +24,6 @@ export const useCategoryUrl = (item: Post, index = 0) => {
 };
 
 export const useMonarchieUrl = (item: Haus) => {
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-
   let category = '';
 
   const name = slugify(item.name);
@@ -44,22 +32,18 @@ export const useMonarchieUrl = (item: Haus) => {
   return category;
 };
 export const usePersonUrl = (item: Person) => {
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-
   let category = '';
 
   const name = slugify(item.full_name);
   category = `/person/${name}-${item.id}`;
+
+  return category;
+};
+export const useEventUrl = (item: Event) => {
+  let category = '';
+
+  const name = slugify(item.name);
+  category = `/event/${name}-${item.id}`;
 
   return category;
 };
