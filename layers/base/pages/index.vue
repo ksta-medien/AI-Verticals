@@ -1,11 +1,41 @@
 <template>
   <div class="boxed-content">
-    <h1 class="!mb-8 text-4xl">Startseite</h1>
+    <h1 class="!mb-8 text-4xl">{{ homepage.headline }}</h1>
+    <component
+      :is="componentForContentItem(block.__component)"
+      v-for="block in homepage.content"
+      :key="`${block.id}-${block.__component}`"
+      :item="block"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
+import type { Content } from '@types';
+import { normalize } from '@utils/jsonApiNormalizer';
+const { mandator } = usePublicConfig();
+
+// get homepage content
+const homepage = ref<Content>(useDefaultContentItems('homepage'));
+
+const { find } = useStrapi<Content>();
+
+try {
+  const homepage_result = await find(`homepage-${mandator}`, {
+    populate: '*',
+  });
+
+  homepage.value = normalize(homepage_result.data);
+
+  if (!homepage.value) {
+    console.log('default');
+    homepage.value = useDefaultContentItems('homepage');
+  }
+} catch (e) {
+  console.log('default');
+  homepage.value = useDefaultContentItems('homepage');
+}
+
 const { setBreadcrumbs } = useBreadcrumbStore();
 setBreadcrumbs([]);
 useHead(useHomepageMeta());

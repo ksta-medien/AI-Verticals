@@ -17,5 +17,6 @@ export interface ContentItem extends Base {
 }
 export interface Content extends Base {
   name?: string;
+  headline?: string;
   content: ContentItem[];
 }

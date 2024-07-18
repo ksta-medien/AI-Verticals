@@ -11,6 +11,7 @@ const componentMap: ComponentMap = {
   'content.artikel-fuer-die-kategorie': defineAsyncComponent(
     () => import('@base/components/content-items/ArticlesForCategorie.vue')
   ),
+  'content.neuste-artikel': defineAsyncComponent(() => import('@base/components/content-items/NewestArticles.vue')),
 };
 
 export const componentForContentItem = (type: string) => {

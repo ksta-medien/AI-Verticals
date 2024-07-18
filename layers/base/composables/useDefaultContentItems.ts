@@ -1,5 +1,9 @@
 export const useDefaultContentItems = (type: string) => {
   const contentItems = {
+    homepage: {
+      headline: 'Startseite',
+      content: [{ id: 1, __component: 'content.neuste-artikel', headline: null }],
+    },
     person: [
       {
         content: [
