@@ -1,15 +1,13 @@
 <template>
-  <ClientOnly>
-    <div class="mb-4">
-      <div v-if="breadcrumbs.length > 0">
-        <div class="boxed-content text-base py-3">
-          <NuxtLink v-for="b in breadcrumbs" :key="b.url" :to="b.url" class="breadcrumb-item">
-            {{ b.label }}
-          </NuxtLink>
-        </div>
+  <div class="mb-4">
+    <div v-if="breadcrumbs.length > 0">
+      <div class="boxed-content text-base py-3">
+        <NuxtLink v-for="b in breadcrumbs" :key="b.url" :to="b.url" class="breadcrumb-item">
+          {{ b.label }}
+        </NuxtLink>
       </div>
     </div>
-  </ClientOnly>
+  </div>
 </template>
 
 <script lang="ts" setup>
