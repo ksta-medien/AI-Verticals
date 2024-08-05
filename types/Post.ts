@@ -14,6 +14,9 @@ export interface Post extends Base {
 }
 export interface ContentItem extends Base {
   headline: string;
+  limit?: number;
+  category_type?: string;
+  category_id?: number;
 }
 export interface Content extends Base {
   name?: string;

@@ -11,6 +11,9 @@ const componentMap: ComponentMap = {
   'content.artikel-fuer-die-kategorie': defineAsyncComponent(
     () => import('@base/components/content-items/ArticlesForCategorie.vue')
   ),
+  'content.alle-artikel-limit': defineAsyncComponent(
+    () => import('@base/components/content-items/AllArticlesWithFilterOption.vue')
+  ),
   'content.neuste-artikel': defineAsyncComponent(() => import('@base/components/content-items/NewestArticles.vue')),
   'content.personen': defineAsyncComponent(() => import('@base/components/content-items/Personen.vue')),
   'content.haeuser': defineAsyncComponent(() => import('@base/components/content-items/Haeuser.vue')),

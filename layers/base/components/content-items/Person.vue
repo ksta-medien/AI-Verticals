@@ -33,7 +33,7 @@
           v-for="(mon, index) in category.monarchies"
           :key="mon.id"
           class="border px-2 rounded-full hover:border-primary text-sm transition-all"
-          :to="useMonarchieUrl(mon.monarchies_id, index)"
+          :to="useCategoryUrl(mon.monarchies_id, 'haus')"
         >
           <span>{{ mon.monarchies_id.name }}</span>
         </nuxt-link>

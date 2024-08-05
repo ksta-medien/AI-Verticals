@@ -26,7 +26,7 @@
           v-for="(cat, index) in post.categories"
           :key="cat.id"
           class="view-image border px-2 rounded-full hover:border-primary transition-all text-sm"
-          :to="useCategoryUrl(post, index)"
+          :to="useItemCategoryUrl(post, index)"
         >
           <span>{{ cat.name }}</span>
         </nuxt-link>
@@ -93,7 +93,7 @@ if (!post.value) {
 
 let breadcrumbs = [{ url: '/', label: 'Startseite' }];
 if (post.value?.categories?.length) {
-  const catUrl = useCategoryUrl(post.value);
+  const catUrl = useItemCategoryUrl(post.value);
   const itemUrl = useItemUrl(post.value);
   breadcrumbs = [
     ...breadcrumbs,

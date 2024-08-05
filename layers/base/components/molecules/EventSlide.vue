@@ -31,7 +31,7 @@ const props = defineProps<{
   item: Event;
 }>();
 
-const slug = useEventUrl(props.item);
+const slug = useCategoryUrl(props.item, 'event');
 </script>
 
 <style scoped></style>

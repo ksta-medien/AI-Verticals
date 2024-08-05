@@ -37,7 +37,7 @@ const props = defineProps<{
   item: Person;
 }>();
 
-const slug = usePersonUrl(props.item);
+const slug = useCategoryUrl(props.item, 'person');
 </script>
 
 <style scoped></style>

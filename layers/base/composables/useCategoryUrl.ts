@@ -12,7 +12,7 @@ const slugify = (str: string) =>
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-export const useCategoryUrl = (item: Post, index = 0) => {
+export const useItemCategoryUrl = (item: Post, index = 0) => {
   let category = '';
 
   if (item.categories?.length) {
@@ -23,7 +23,7 @@ export const useCategoryUrl = (item: Post, index = 0) => {
   return category;
 };
 
-export const useMonarchieUrl = (item: Haus) => {
+const useMonarchieUrl = (item: Haus) => {
   let category = '';
 
   const name = slugify(item.name);
@@ -31,7 +31,7 @@ export const useMonarchieUrl = (item: Haus) => {
 
   return category;
 };
-export const usePersonUrl = (item: Person) => {
+const usePersonUrl = (item: Person) => {
   let category = '';
 
   const name = slugify(item.full_name);
@@ -39,11 +39,23 @@ export const usePersonUrl = (item: Person) => {
 
   return category;
 };
-export const useEventUrl = (item: Event) => {
+const useEventUrl = (item: Event) => {
   let category = '';
 
   const name = slugify(item.name);
   category = `/event/${name}-${item.id}`;
 
   return category;
+};
+export const useCategoryUrl = (item: Event | Haus | Person, type: string) => {
+  switch (type) {
+    case 'haus':
+      return useMonarchieUrl(item as Haus);
+    case 'person':
+      return usePersonUrl(item as Person);
+    case 'event':
+      return useEventUrl(item as Event);
+    default:
+      return 'not found';
+  }
 };

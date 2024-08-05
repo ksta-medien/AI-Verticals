@@ -31,7 +31,7 @@ const props = defineProps<{
   item: Haus;
 }>();
 
-const slug = useMonarchieUrl(props.item);
+const slug = useCategoryUrl(props.item, 'haus');
 </script>
 
 <style scoped></style>

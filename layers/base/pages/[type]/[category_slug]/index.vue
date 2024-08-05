@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Person, Haus, Content, Category } from '@types';
+import type { Person, Haus, Content, Event } from '@types';
 import type { PageMeta } from '@types';
 import { normalize } from '@utils/jsonApiNormalizer';
 const { mandator } = usePublicConfig();
@@ -30,7 +30,7 @@ const {
 // get category details
 const { getItemById } = useDirectusItems();
 
-const category = ref<Haus | Person | null>();
+const category = ref<Haus | Person | Event | null>();
 const parameters = {
   fields: '*.*.*.*',
   deep: {
@@ -38,7 +38,7 @@ const parameters = {
   },
 };
 try {
-  const category_result = await getItemById<Haus | Person>({
+  const category_result = await getItemById<Haus | Person | Event>({
     collection: useEnrichmentType(type),
     id: id as string,
     params: parameters,

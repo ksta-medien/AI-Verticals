@@ -34,7 +34,7 @@
             v-for="(cat, index) in item.categories.slice(0, 4)"
             :key="cat.id"
             class="border px-2 rounded-full hover:border-primary transition-all text-sm"
-            :to="useCategoryUrl(item, index)"
+            :to="useItemCategoryUrl(item, index)"
           >
             <span>{{ cat.name }}</span>
           </nuxt-link>
