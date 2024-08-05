@@ -17,7 +17,7 @@
       />
     </div>
     <div>
-      <h1 class="!mb-4 text-4xl">{{ category.name }}</h1>
+      <h2 class="mb-4 text-4xl">{{ category.name }}</h2>
       <p>{{ category.short_briefing }}</p>
       <p v-if="category.wikipedia_link" class="mt-4">
         <a target="_blank" :href="category.wikipedia_link">Mehr Informationen bei Wikipedia ⇢</a>

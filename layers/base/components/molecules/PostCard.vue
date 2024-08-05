@@ -7,11 +7,10 @@
             v-if="item.cover"
             :alt="item?.cover?.alternativeText || item.title"
             loading="lazy"
-            quality="60"
             :src="item.cover.url"
-            sizes="sm:100vw md:30vw lg:30vw"
-            :height="400"
-            :width="600"
+            sizes="sm:100vw md:50vw lg:30vw"
+            height="337"
+            width="600"
             :img-attrs="{
               class:
                 'group-focus:view-image min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out',
@@ -21,10 +20,8 @@
             v-else
             :alt="item.title"
             loading="lazy"
-            quality="60"
-            provider="ipx"
             src="/img/placeholder.jpg"
-            height="400"
+            height="337"
             width="600"
             class="group-focus:view-image min-w-full group-hover:scale-105 transition-all duration-[2000ms] ease-out"
           />

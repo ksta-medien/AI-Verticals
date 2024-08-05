@@ -20,6 +20,8 @@ export default defineNuxtConfig({
     meilisearchPublicKey: '',
     mandator: MANDATOR,
     public: {
+      imgixSecret: '',
+      imgixHost: '',
       hcaptchaKey: '',
       clientVersion: pkg.version,
       blogApiUrl: '',
@@ -78,6 +80,18 @@ export default defineNuxtConfig({
     directus: {
       baseURL: 'https://enrichment-center.dev.ds.dumont.de/assets/',
     },
+    providers: {
+      customProvider: {
+        name: 'kdm-imgx',
+        provider: '../../utils/imgxProvider.ts', // Path to custom provider
+        baseURL: 'https://image.ds.dumont.de',
+        options: {
+          baseURL: 'https://image.ds.dumont.de',
+        },
+      },
+    },
+    quality: 90,
+    format: ['avif', 'webp'],
   },
   experimental: {
     componentIslands: true,

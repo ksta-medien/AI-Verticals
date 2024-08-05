@@ -17,8 +17,8 @@
       />
     </div>
     <div>
-      <h1 class="!mb-2 text-4xl">{{ category.full_name }}</h1>
-      <h2 v-if="category.royal_title" class="my-2">{{ category.royal_title }}</h2>
+      <h2 class="mb-2 text-4xl">{{ category.full_name }}</h2>
+      <h3 v-if="category.royal_title" class="my-2">{{ category.royal_title }}</h3>
       <div>
         <span>* {{ category.birth_date }} in {{ category.birth_place }}</span>
         <template v-if="category.death_date"
