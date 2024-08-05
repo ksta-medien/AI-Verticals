@@ -1,6 +1,6 @@
 <template>
   <TemplatesHeader />
-  <NuxtLoadingIndicator color="#7B0323" />
+  <NuxtLoadingIndicator color="#6A40A0" />
   <TemplatesSidebar />
   <main class="mb-8">
     <TemplatesBreadcrumb></TemplatesBreadcrumb>

@@ -1,6 +1,6 @@
 <template>
   <TemplatesHeader />
-  <NuxtLoadingIndicator color="#ffa931" />
+  <NuxtLoadingIndicator color="#6A40A0" />
   <TemplatesSidebar />
   <div class="h-screen boxed-content">
     <div class="content-frame my-12 text-center">
