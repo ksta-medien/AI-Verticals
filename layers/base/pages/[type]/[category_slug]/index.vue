@@ -1,5 +1,8 @@
 <template>
   <div class="boxed-content">
+    <h1 class="mb-8 text-4xl font-semibold">
+      {{ $filters.headline(category_content?.headline || 'Fehler $', category?.full_name || category?.name) }}
+    </h1>
     <component
       :is="componentForContentItem(block.__component)"
       v-for="block in category_content.content"

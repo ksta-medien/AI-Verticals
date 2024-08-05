@@ -1,6 +1,6 @@
 <template>
   <div class="boxed-content">
-    <h1 class="mb-8 text-4xl">{{ homepage.headline }}</h1>
+    <h1 class="mb-8 text-4xl font-semibold">{{ homepage.headline }}</h1>
     <component
       :is="componentForContentItem(block.__component)"
       v-for="block in homepage.content"

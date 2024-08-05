@@ -17,7 +17,7 @@
       />
     </div>
     <div>
-      <h2 class="mb-4 text-4xl">{{ category.name }}</h2>
+      <h2 class="mb-4 text-4xl">{{ $filters.headline(item.headline, category.name) }}</h2>
       <p>{{ category.short_briefing }}</p>
       <p v-if="category.wikipedia_link" class="mt-4">
         <a target="_blank" :href="category.wikipedia_link">Mehr Informationen bei Wikipedia ⇢</a>
@@ -27,11 +27,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { Haus } from '@types';
+import type { ContentItem, Haus } from '@types';
 const { directus } = usePublicConfig();
 
 defineProps<{
   category: Haus;
+  item: ContentItem;
 }>();
 </script>
 

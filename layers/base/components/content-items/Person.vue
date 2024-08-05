@@ -17,7 +17,7 @@
       />
     </div>
     <div>
-      <h2 class="mb-2 text-4xl">{{ category.full_name }}</h2>
+      <h2 class="mb-2 text-4xl">{{ $filters.headline(item.headline, category.full_name) }}</h2>
       <h3 v-if="category.royal_title" class="my-2">{{ category.royal_title }}</h3>
       <div>
         <span>* {{ category.birth_date }} in {{ category.birth_place }}</span>
@@ -43,11 +43,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { Person } from '@types';
+import type { ContentItem, Person } from '@types';
 const { directus } = usePublicConfig();
 
 defineProps<{
   category: Person;
+  item: ContentItem;
 }>();
 </script>
 

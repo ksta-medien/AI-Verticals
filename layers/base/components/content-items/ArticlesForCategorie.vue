@@ -1,6 +1,8 @@
 <template>
   <section class="articles-for-categorie">
-    <h2 class="!my-8 text-4xl">{{ item.headline }}</h2>
+    <h2 class="!my-8 text-4xl">
+      {{ $filters.headline(item.headline, category.full_name || category.name) }}
+    </h2>
     <div
       v-if="posts && posts.length"
       class="mt-8 grid gap-x-8 gap-y-16 sm:gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
