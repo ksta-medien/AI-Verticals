@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Post } from '@types';
+import type { Post, ContentItem } from '@types';
 import { normalize } from '@utils/jsonApiNormalizer';
 const { mandator } = usePublicConfig();
 

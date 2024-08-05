@@ -8,6 +8,7 @@ export interface Person extends Category {
   birth_date: string;
   death_date?: string;
   royal_title?: string;
+  short_briefing: string;
   monarchies?: [
     {
       id: string;
