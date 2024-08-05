@@ -6,7 +6,6 @@ export default defineNuxtPlugin(async ({ vueApp }) => {
       let result = text;
 
       if (text && text.includes('$')) {
-        console.log('yes, found!!!!');
         result = text.replace('$', replace);
       }
       return result;
