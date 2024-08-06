@@ -5,7 +5,7 @@ ENV ENVIRONMENT=$ENVIRONMENT
 RUN mkdir /app
 RUN mkdir /cache
 
-RUN npm install --platform=linuxmusl --arch=x64 sharp
+RUN npm rebuild --arch=x64 --platform=linux --libc=musl sharp
 
 WORKDIR /app
 
