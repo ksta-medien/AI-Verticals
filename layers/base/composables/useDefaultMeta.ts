@@ -119,9 +119,8 @@ export const useBlogPageMeta = () => {
   const { seo } = storeToRefs(useSiteStore());
   const { blogUrl } = usePublicConfig();
 
-  const title = 'Sex Geschichten, Erotik Geschichten, erotische Geschichten zum Entspannen';
-  const desc =
-    'Kostenlose, geile erotische Geschichten. Sex Geschichten für jeden Fetisch. Täglich neue Erotikgeschichten.';
+  const title = 'RoyalRevue';
+  const desc = 'Alles zu den Royals dieser Welt.';
   return {
     title: title,
     meta: [

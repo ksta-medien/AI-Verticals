@@ -27,14 +27,11 @@ useHead({
   htmlAttrs: {
     lang: 'de-DE',
   },
-  // link: [
-  //   { rel: 'apple-touch-icon', sizes: '180x180', href: `/favicon/apple-touch-icon.png` },
-  //   { rel: 'icon', type: 'image/png', sizes: '32x32', href: `/favicon/favicon-32x32.png` },
-  //   { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: '#000' },
-  //   { rel: 'shortcut icon', href: `/favicon/favicon.ico` },
-  //   { rel: 'manifest', href: `/favicon/site.webmanifest` },
-  //   { rel: 'canonical', href: `${blogUrl}${path}` },
-  // ],
+  link: [
+    { rel: 'apple-touch-icon', sizes: '180x180', href: `/favicon/app_icon.png` },
+    { rel: 'icon', type: 'image/png', sizes: '32x32', href: `/favicon/app_icon.png` },
+    { rel: 'manifest', href: `/favicon/site.webmanifest` },
+  ],
 });
 </script>
 

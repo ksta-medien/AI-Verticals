@@ -40,6 +40,7 @@ defineProps<{
 
 const parameters = {
   fields: '*.*.*.*',
+  filter: { occupations: { people_occupations_id: { name: { _contains: 'Royal' } } } },
   deep: {
     monarchies: { _limit: 3 },
   },
