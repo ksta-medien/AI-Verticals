@@ -64,16 +64,16 @@ if (props.item.category_type && props.item.category_id) {
   }
 }
 
-// get posts for category
+// get posts with filter if set
 const posts = ref<Post[] | null>(null);
-const meta = ref<PageMeta>({ pagination: { page: parseInt(page) || 1, pageSize: props.item.limit || 15 } });
+const meta = ref<PageMeta>({ pagination: { start: props.item.start || 0, limit: props.item.limit || 15 } });
 
 const { find } = useStrapi<Post>();
 
 const result = await find(`articles-${mandator}`, {
   populate: '*',
   sort: 'publishedAt:desc',
-  pagination: { pageSize: meta.value.pagination.pageSize, page: meta.value.pagination.page },
+  pagination: { start: meta.value.pagination.start as number, limit: meta.value.pagination.limit as number },
   filters: { categories: { $contains: category.value?.full_name || category.value?.name || null } },
 });
 
