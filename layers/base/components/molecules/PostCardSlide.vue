@@ -4,7 +4,6 @@
       <div v-if="!hideImage" class="image absolute top-0 bottom-0 left-0 right-0">
         <nuxt-picture
           v-if="item.cover"
-          provider="ipx"
           :alt="item?.cover?.alternativeText || item.title"
           loading="lazy"
           quality="90"
