@@ -4,12 +4,13 @@
       <div v-if="!hideImage" class="image absolute top-0 bottom-0 left-0 right-0">
         <nuxt-picture
           v-if="item.cover"
+          provider="ipx"
           :alt="item?.cover?.alternativeText || item.title"
           loading="lazy"
-          quality="60"
+          quality="90"
           :src="item.cover.url"
           sizes="sm:100vw md:30vw lg:30vw"
-          :height="400"
+          :height="500"
           :width="600"
           :img-attrs="{
             class:
@@ -23,7 +24,7 @@
           quality="60"
           provider="ipx"
           src="/img/placeholder.jpg"
-          height="400"
+          height="500"
           width="600"
           class="group-focus:view-image min-w-full min-h-full w-auto h-auto object-cover group-hover:scale-105 transition-all duration-[2000ms] ease-out"
         />

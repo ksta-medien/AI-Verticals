@@ -32,16 +32,16 @@
         </nuxt-link>
       </div>
     </div>
-    <nuxt-img
+    <nuxt-picture
       v-if="post.cover"
-      class="element-shadow mb-8"
+      :img-attrs="{ class: 'element-shadow mb-8 w-full' }"
       :alt="post.title"
-      format="webp"
       :src="post.cover.url"
       sizes="sm:90vw md:50vw lg:70vw"
       :height="post.cover.height"
       :width="post.cover.width"
       loading="eager"
+      quality="90"
     />
     <img
       v-else

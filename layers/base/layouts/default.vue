@@ -6,7 +6,7 @@
     <TemplatesBreadcrumb></TemplatesBreadcrumb>
     <slot v-bind="$attrs" />
   </main>
-  <!-- <TemplatesFooter /> -->
+  <TemplatesFooter />
 </template>
 
 <script lang="ts" setup>

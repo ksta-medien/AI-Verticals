@@ -5,6 +5,7 @@
         <div v-if="!hideImage" class="image relative rounded-lg overflow-hidden">
           <nuxt-picture
             v-if="item.cover"
+            provider="ipx"
             :alt="item?.cover?.alternativeText || item.title"
             loading="lazy"
             :src="item.cover.url"
