@@ -2,7 +2,7 @@
   <TemplatesHeader />
   <NuxtLoadingIndicator color="#6A40A0" />
   <TemplatesSidebar />
-  <div class="h-screen boxed-content">
+  <div class="min-h-screen boxed-content">
     <div class="content-frame my-12 text-center">
       <p class="text-primary text-4xl">{{ error?.statusCode }}</p>
       <p class="mt-4">

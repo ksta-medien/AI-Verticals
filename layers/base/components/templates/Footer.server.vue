@@ -1,5 +1,5 @@
 <template>
-  <footer class="py-16 bg-black/50">
+  <footer class="py-16">
     <div class="boxed-content">
       <div class="flex flex-col justify-between gap-16 items-start mt-12">
         <!-- <img :alt="$t('meta.name')" src="/img/ci/logo.webp" class="h-12" /> -->
@@ -42,13 +42,13 @@
             </NuxtLink> -->
           </div>
         </div>
-        <div class="text-xs lg:w-2/3 text-creme/40">
+        <!-- <div class="text-xs lg:w-2/3 text-creme/40">
           Alle Models auf dieser Website sind 18 Jahre oder älter. <br /><br />Die Geschichten, alle Namen, Charaktere
           und Begebenheiten, die auf dieser Website dargestellt werden, sind fiktiv. Eine Identifizierung mit
           tatsächlichen Personen (lebenden oder verstorbenen), Orten, Gebäuden und Produkten ist nicht beabsichtigt und
           sollte auch nicht vermutet werden. <br />
           <NuxtLink class="hover:underline block mt-4 text-creme" to="/impressum">Impressum</NuxtLink>
-        </div>
+        </div> -->
       </div>
     </div>
   </footer>
