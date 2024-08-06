@@ -3,6 +3,8 @@
     <h2 v-if="item.headline" class="mb-8 text-4xl">{{ item.headline }}</h2>
     <Swiper
       :space-between="20"
+      :modules="modules"
+      :pagination="{ clickable: true }"
       :breakpoints="{
         320: {
           slidesPerView: 2,
@@ -27,6 +29,7 @@
 
 <script lang="ts" setup>
 import type { Event, ContentItem } from '@types';
+const modules = [SwiperPagination, SwiperA11y];
 
 const { getItems } = useDirectusItems();
 const events = ref<Event[]>();

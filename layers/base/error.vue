@@ -9,9 +9,9 @@
         Fehler mit Seite: <span class="italic text-primary">{{ error?.url }}</span>
       </p>
       <button class="mt-8 form-button" @click="handleError">Zurück zur Startseite</button>
-      <p class="opacity-10 mt-16 md:w-2/3 text-left">
+      <div class="mt-16 md:w-2/3 text-left">
         {{ error }}
-      </p>
+      </div>
     </div>
   </div>
   <TemplatesFooter />

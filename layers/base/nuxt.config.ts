@@ -93,6 +93,7 @@ export default defineNuxtConfig({
     quality: 90,
     format: ['avif', 'webp'],
   },
+  swiper: {},
   experimental: {
     componentIslands: true,
     viewTransition: true,

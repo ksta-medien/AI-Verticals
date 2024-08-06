@@ -1,7 +1,16 @@
 <template>
   <section class="newest-articles my-8">
     <h2 v-if="item.headline" class="mb-8 text-4xl">{{ item.headline }}</h2>
-    <Swiper v-if="posts && posts.length" :space-between="50" :modules="modules">
+    <Swiper
+      v-if="posts && posts.length"
+      :space-between="50"
+      :modules="modules"
+      :pagination="{ clickable: true }"
+      :autoplay="{
+        delay: 8000,
+        disableOnInteraction: true,
+      }"
+    >
       <SwiperSlide v-for="post in posts" :key="post.id">
         <MoleculesPostCardSlide :item="post" />
       </SwiperSlide>
@@ -15,13 +24,11 @@ import type { Post, ContentItem } from '@types';
 import { normalize } from '@utils/jsonApiNormalizer';
 const { mandator } = usePublicConfig();
 
-// import { SwiperPagination } from 'swiper/vue';
-
 defineProps<{
   item: ContentItem;
 }>();
 
-const modules = [];
+const modules = [SwiperPagination, SwiperAutoplay, SwiperA11y];
 
 // get latest posts
 const posts = ref<Post[] | null>(null);
