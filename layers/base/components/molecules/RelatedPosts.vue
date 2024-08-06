@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black/20 border border-primary/30 element-shadow px-6 py-8">
-    <p class="text-3xl fancy font-bold mb-4 border-b pb-4 border-primary/30">Mehr geile Sexgeschichten</p>
+    <p class="text-3xl fancy font-bold mb-4 border-b pb-4 border-primary/30">Mehr</p>
     <ul class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
       <li v-for="p in posts" :key="p.id">
         <NuxtLink :to="`/geschichten/${p.slug}`">

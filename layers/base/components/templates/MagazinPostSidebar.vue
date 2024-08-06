@@ -9,12 +9,6 @@
             <p class="opacity-70">{{ rp.intro }}</p>
           </NuxtLink>
         </li>
-        <li class="border-b pb-4 border-primary/50">
-          <NuxtLink to="https://lyrische-erotik.de" external no-rel target="_blank">
-            <h3 class="text-2xl mb-2 external-link">Lyrische Erotik</h3>
-            <p class="opacity-70">{{ 'Sexgeschichten für deine Fantasie' }}</p>
-          </NuxtLink>
-        </li>
       </ul>
     </div>
   </div>
