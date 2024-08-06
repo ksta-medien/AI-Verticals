@@ -5,6 +5,8 @@ ENV ENVIRONMENT=$ENVIRONMENT
 RUN mkdir /app
 RUN mkdir /cache
 
+RUN npm install --platform=linuxmusl --arch=x64 sharp
+
 WORKDIR /app
 
 COPY ./.output /app
