@@ -11,14 +11,14 @@
 </template>
 
 <script lang="ts" setup>
-import type { Content } from '@types';
+import type { Home } from '@types';
 import { normalize } from '@utils/jsonApiNormalizer';
 const { mandator } = usePublicConfig();
 
 // get homepage content
-const homepage = ref<Content>(useDefaultContentItems('homepage'));
+const homepage = ref<Home>(useDefaultContentItems('homepage'));
 
-const { find } = useStrapi<Content>();
+const { find } = useStrapi<Home>();
 
 try {
   const homepage_result = await find(`homepage-${mandator}`, {
@@ -36,7 +36,7 @@ try {
 
 const { setBreadcrumbs } = useBreadcrumbStore();
 setBreadcrumbs([]);
-useHead(useHomepageMeta());
+useHead(useHomepageMeta(homepage));
 useSchemaOrg([useOrganisationSchema(), useWebsiteSchema()]);
 </script>
 

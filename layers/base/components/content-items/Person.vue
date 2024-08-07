@@ -25,6 +25,7 @@
           ><span> – † {{ category.death_date }}</span></template
         >
       </div>
+      <p class="mt-4">{{ category.short_briefing }}</p>
       <p v-if="category.wikipedia_link" class="mt-4">
         <a target="_blank" :href="category.wikipedia_link">Mehr Informationen bei Wikipedia ⇢</a>
       </p>

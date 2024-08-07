@@ -1,10 +1,19 @@
 import { getImage } from '@utils/strapiImageHelper';
-import { ContentPage, ImageFormat, MagazinCategory, MagazinPost } from '@types';
-import type { StrapiImage } from '@types';
-import type { Post } from '@types';
+import { ImageFormat } from '@types';
+import type { ContentPage, Home, StrapiImage, Post, Author, Haus, Person, Event, Content } from '@types';
 import type { Ref } from 'vue';
-import type { Category } from '@types';
-import type { Author } from '@types';
+
+const headline = function (text: string, replace: string) {
+  if (!text) return replace;
+
+  let result = text;
+
+  if (text && text.includes('$')) {
+    result = text.replace('$', replace);
+  }
+  return result;
+};
+
 export const useDefaultMeta = () => {
   const { t } = useI18n();
 
@@ -19,21 +28,20 @@ export const useDefaultMeta = () => {
   ];
 };
 
-export const useHomepageMeta = () => {
-  const { seo } = storeToRefs(useSiteStore());
+export const useHomepageMeta = (home: Ref<Home>) => {
   const { blogUrl } = usePublicConfig();
   return {
-    title: seo.value.metaTitle,
+    title: home.value?.Seo.metaTitle,
     meta: [
-      { name: 'description', content: seo.value.metaDescription },
-      { property: 'og:title', content: seo.value.metaTitle },
-      { property: 'og:description', content: seo.value.metaDescription },
-      { property: 'og:image', content: getImage(seo.value.metaCover as StrapiImage, ImageFormat.MEDIUM) },
-      { property: 'og:image:width', content: seo.value.metaCover?.formats[ImageFormat.MEDIUM].width },
-      { property: 'og:image:height', content: seo.value.metaCover?.formats[ImageFormat.MEDIUM].height },
-      { name: 'twitter:title', content: seo.value?.metaTitle },
-      { name: 'twitter:description', content: seo.value?.metaDescription },
-      { name: 'twitter:image', content: getImage(seo.value.metaCover as StrapiImage, ImageFormat.SMALL) },
+      { name: 'description', content: home.value?.Seo.metaDescription },
+      { property: 'og:title', content: home.value?.Seo.metaTitle },
+      { property: 'og:description', content: home.value?.Seo.metaDescription },
+      { property: 'og:image', content: getImage(home.value?.Seo.metaCover as StrapiImage, ImageFormat.MEDIUM) },
+      { property: 'og:image:width', content: home.value?.Seo.metaCover?.formats[ImageFormat.MEDIUM].width },
+      { property: 'og:image:height', content: home.value?.Seo.metaCover?.formats[ImageFormat.MEDIUM].height },
+      { name: 'twitter:title', content: home.value?.Seo?.metaTitle },
+      { name: 'twitter:description', content: home.value?.Seo?.metaDescription },
+      { name: 'twitter:image', content: getImage(home.value?.Seo.metaCover as StrapiImage, ImageFormat.SMALL) },
       { property: 'og:url', content: `${blogUrl}` },
       { property: 'og:type', content: 'website' },
       ...useDefaultMeta(),
@@ -78,162 +86,37 @@ export const useArticleMeta = (post: Ref<Post>) => {
   };
 };
 
-export const useCategoryPageMeta = (category: Ref<Category | MagazinCategory>) => {
+export const useCategoryPageMeta = (category: Ref<Haus | Person | Event>, content: Ref<Content>) => {
   const { blogUrl } = usePublicConfig();
   const { fullPath } = useRoute();
   const { t } = useI18n();
 
-  const metaDesc = category.value?.seo?.metaDescription
-    ? category.value?.seo?.metaDescription
-    : category.value.intro
-        ?.map((el) => el.children)
-        .flat()
-        .filter((el) => el.type === 'text')
-        .map((el) => el.text)
-        .join(' ');
+  const metaDesc = category.value?.Seo?.metaDescription
+    ? category.value?.Seo?.metaDescription
+    : category.value.short_briefing;
 
   return {
-    title: `${category.value?.seo?.metaTitle ? category.value?.seo?.metaTitle : category.value.name}`,
+    title: headline(content.value?.headline || '$', category.value?.full_name || category.value?.name),
     meta: [
       {
         name: 'description',
         content: metaDesc,
       },
-      { name: 'author', content: t('meta.author') },
-      { property: 'og:title', content: `${category.value.name} - ${t('meta.name')}` },
+      {
+        property: 'og:title',
+        content: headline(content.value?.headline || '$', category.value?.full_name || category.value?.name),
+      },
       { property: 'og:description', content: metaDesc },
-      { property: 'og:image', content: getImage(category.value.cover as StrapiImage, ImageFormat.MEDIUM) },
-      { property: 'og:image:width', content: category.value.cover?.formats[ImageFormat.MEDIUM].width },
-      { property: 'og:image:height', content: category.value.cover?.formats[ImageFormat.MEDIUM].height },
+      // { property: 'og:image', content: getImage(category.value.cover as StrapiImage, ImageFormat.MEDIUM) },
+      // { property: 'og:image:width', content: category.value.cover?.formats[ImageFormat.MEDIUM].width },
+      // { property: 'og:image:height', content: category.value.cover?.formats[ImageFormat.MEDIUM].height },
       { property: 'og:type', content: 'website' },
-      { name: 'twitter:title', content: `${category.value.name} - ${t('meta.name')}` },
+      {
+        name: 'twitter:title',
+        content: headline(content.value?.headline || '$', category.value?.full_name || category.value?.name),
+      },
       { name: 'twitter:description', content: metaDesc },
-      { name: 'twitter:image', content: getImage(category.value.cover as StrapiImage, ImageFormat.SMALL) },
-      { property: 'og:url', content: `${blogUrl}${fullPath}` },
-      ...useDefaultMeta(),
-    ],
-  };
-};
-
-export const useBlogPageMeta = () => {
-  const { seo } = storeToRefs(useSiteStore());
-  const { blogUrl } = usePublicConfig();
-
-  const title = 'RoyalRevue';
-  const desc = 'Alles zu den Royals dieser Welt.';
-  return {
-    title: title,
-    meta: [
-      {
-        name: 'description',
-        content: desc,
-      },
-      { property: 'og:title', content: title },
-      {
-        property: 'og:description',
-        content: desc,
-      },
-      { property: 'og:image', content: getImage(seo.value.shareImage as StrapiImage, ImageFormat.MEDIUM) },
-      { property: 'og:image:width', content: seo.value.shareImage.formats[ImageFormat.SMALL].width },
-      { property: 'og:image:height', content: seo.value.shareImage.formats[ImageFormat.SMALL].height },
-      { name: 'twitter:title', content: title },
-      {
-        name: 'twitter:description',
-        content: desc,
-      },
-      { name: 'twitter:image', content: getImage(seo.value.shareImage as StrapiImage, ImageFormat.SMALL) },
-      { property: 'og:url', content: `${blogUrl}/geschichten` },
-      { property: 'og:type', content: 'website' },
-      ...useDefaultMeta(),
-    ],
-  };
-};
-
-export const useMagazinPageMeta = () => {
-  const { seo } = storeToRefs(useSiteStore());
-  const { blogUrl } = usePublicConfig();
-  const { t } = useI18n();
-  const title = t('meta.magazinTitle');
-  const desc = t('meta.magazinDesc');
-  return {
-    title: title,
-    meta: [
-      {
-        name: 'description',
-        content: desc,
-      },
-      { property: 'og:title', content: title },
-      {
-        property: 'og:description',
-        content: desc,
-      },
-      { property: 'og:image', content: getImage(seo.value.shareImage as StrapiImage, ImageFormat.MEDIUM) },
-      { property: 'og:image:width', content: seo.value.shareImage.formats[ImageFormat.SMALL].width },
-      { property: 'og:image:height', content: seo.value.shareImage.formats[ImageFormat.SMALL].height },
-      { name: 'twitter:title', content: title },
-      {
-        name: 'twitter:description',
-        content: desc,
-      },
-      { name: 'twitter:image', content: getImage(seo.value.shareImage as StrapiImage, ImageFormat.SMALL) },
-      { property: 'og:url', content: `${blogUrl}/magazin` },
-      { property: 'og:type', content: 'website' },
-      ...useDefaultMeta(),
-    ],
-  };
-};
-
-export const useAuthorPageMeta = (author: Ref<Author>) => {
-  const { blogUrl } = usePublicConfig();
-  const { fullPath } = useRoute();
-  const { t } = useI18n();
-  const metaDesc = author.value.bio
-    .map((el) => el.children)
-    .flat()
-    .filter((el) => el.type === 'text')
-    .map((el) => el.text)
-    .join(' ');
-
-  return {
-    title: `${author.value?.seo?.metaTitle ? author.value?.seo?.metaTitle : author.value.name}`,
-    meta: [
-      {
-        name: 'description',
-        content: metaDesc,
-      },
-      { name: 'author', content: t('meta.author') },
-      { property: 'og:title', content: `${author.value.name} - ${t('meta.name')}` },
-      { property: 'og:description', content: metaDesc },
-      { property: 'og:image', content: getImage(author.value.portrait as StrapiImage, ImageFormat.MEDIUM) },
-      { property: 'og:type', content: 'website' },
-      { name: 'twitter:title', content: `${author.value.name} - ${t('meta.name')}` },
-      { name: 'twitter:description', content: metaDesc },
-      { name: 'twitter:image', content: getImage(author.value.portrait as StrapiImage, ImageFormat.SMALL) },
-      { property: 'og:url', content: `${blogUrl}${fullPath}` },
-      ...useDefaultMeta(),
-    ],
-  };
-};
-
-export const useContentPageMeta = (page: Ref<ContentPage>) => {
-  const { blogUrl } = usePublicConfig();
-  const { fullPath } = useRoute();
-  const { t } = useI18n();
-
-  return {
-    title: `${page.value.seo.metaTitle}`,
-    meta: [
-      { name: 'description', content: page.value.seo.metaDescription },
-      { name: 'author', content: t('meta.author') },
-      { property: 'og:title', content: page.value.seo.metaTitle },
-      { property: 'og:description', content: page.value.seo.metaDescription },
-      { property: 'og:image', content: getImage(page.value.seo.shareImage as StrapiImage, ImageFormat.MEDIUM) },
-      { property: 'og:image:width', content: page.value.seo.shareImage?.formats[ImageFormat.MEDIUM].width },
-      { property: 'og:image:height', content: page.value.seo.shareImage?.formats[ImageFormat.MEDIUM].height },
-      { property: 'og:type', content: 'website' },
-      { name: 'twitter:title', content: page.value.seo.metaTitle },
-      { name: 'twitter:description', content: page.value.seo.metaDescription },
-      { name: 'twitter:image', content: getImage(page.value.seo.shareImage as StrapiImage, ImageFormat.SMALL) },
+      // { name: 'twitter:image', content: getImage(category.value.cover as StrapiImage, ImageFormat.SMALL) },
       { property: 'og:url', content: `${blogUrl}${fullPath}` },
       ...useDefaultMeta(),
     ],

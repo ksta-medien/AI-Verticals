@@ -30,7 +30,7 @@ const {
 // get category details
 const { getItemById } = useDirectusItems();
 
-const category = ref<Haus | Person | Event | null>();
+const category = ref<Haus | Person | Event | null>(null);
 const parameters = {
   fields: '*.*.*.*',
   deep: {
@@ -83,6 +83,8 @@ const breadcrumbs = [
 
 const { setBreadcrumbs } = useBreadcrumbStore();
 setBreadcrumbs(breadcrumbs);
+useHead(useCategoryPageMeta(category, category_content));
+// useSchemaOrg([useOrganisationSchema(), useWebsiteSchema()]);
 </script>
 
 <style scoped></style>
