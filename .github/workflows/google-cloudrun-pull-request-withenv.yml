@@ -12,6 +12,7 @@ jobs:
       NUXT_PUBLIC_DIRECTUS_URL: https://enrichment-center.dev.ds.dumont.de
       NUXT_DIRECTUS_API_TOKEN: 5n65w3aaMFUMqL52y6owV5AQoXfHQXfQ
       STRAPI_URL: https://ai-verticals-strapi-ktmjadcfsa-ey.a.run.app
+      NUXT_PUBLIC_BLOG_URL: https://pr-${{ github.event.pull_request.number }}-${{ matrix.mandator }}-verticals-web-zbz3eqkwza-ey.a.run.app
       ENV: dev
       MANDATOR: ${{ matrix.mandator }}
       NUXT_DEPLOYMENT_HASH: ${{ github.sha }}
