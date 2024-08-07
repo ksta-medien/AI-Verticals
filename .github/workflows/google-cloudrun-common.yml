@@ -128,7 +128,7 @@ jobs:
             NUXT_PUBLIC_DIRECTUS_URL= ${{ inputs.NUXT_PUBLIC_DIRECTUS_URL }}
             NUXT_DIRECTUS_API_TOKEN= ${{ inputs.NUXT_DIRECTUS_API_TOKEN }}
             STRAPI_URL= ${{ inputs.STRAPI_URL }}
-            NUXT_PUBLIC_BLOG_URL: ${{ inputs.NUXT_PUBLIC_BLOG_URL }}
+            NUXT_PUBLIC_BLOG_URL= ${{ inputs.NUXT_PUBLIC_BLOG_URL }}
             ENV= ${{ inputs.ENV}}
             MANDATOR= ${{inputs.MANDATOR}}
             NUXT_DEPLOYMENT_HASH= ${{ github.sha }}
